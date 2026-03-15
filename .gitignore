@@ -1,0 +1,22 @@
+# Build output
+build/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# CLion / JetBrains
+.idea/
+cmake-build-debug/
+cmake-build-release/
+
+# Compiled binaries
+*.o
+*.a
+*.out
+*.exe
+
+# Logs
+*.log

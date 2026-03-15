@@ -1,3 +1,0 @@
-/Users/stanley/game-engine/my-game-engine/build/CMakeFiles/MyEngine.dir
-/Users/stanley/game-engine/my-game-engine/build/CMakeFiles/edit_cache.dir
-/Users/stanley/game-engine/my-game-engine/build/CMakeFiles/rebuild_cache.dir
