@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/stanley/game-engine/my-game-engine/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
