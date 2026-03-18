@@ -25,6 +25,13 @@ void Engine::init() {
         SDL_MapRGB(screenSurface->format, 0XFF, 0XFF, 0XBB)
     );
     SDL_UpdateWindowSurface(window);
+    EntityID e1 = ecs.createEntity();
+    ecs.addPosition(e1, 0.0f, 0.0f);
+    ecs.addVelocity(e1, 1.0f, 0.5f);
+
+    EntityID e2 = ecs.createEntity();
+    ecs.addPosition(e2, 100.0f, 50.0f);
+    ecs.addVelocity(e2, 2.0f, 0.0f);
 }
 
 void Engine::run() {
@@ -57,6 +64,8 @@ void Engine::processInput() {
     }
 }
 
-void Engine::update() {}
+void Engine::update() {
+    ecs.update();
+}
 
 void Engine::render() {}

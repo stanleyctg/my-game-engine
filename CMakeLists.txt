@@ -7,7 +7,8 @@ find_package(SDL2 REQUIRED)
 
 add_executable(MyEngine
     src/main.cpp
-    src/Engine.cpp
+    src/engine.cpp
+    src/ECS.cpp
 )
 
 target_include_directories(MyEngine PRIVATE
