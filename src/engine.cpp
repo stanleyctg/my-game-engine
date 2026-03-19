@@ -47,7 +47,6 @@ void Engine::run() {
         if (frameTime < TARGET_FRAME_MS) {
             SDL_Delay(TARGET_FRAME_MS - frameTime);
         }
-        std::cout << "Frame time: " << SDL_GetTicks() - frameStart << "ms\n";
     }
 }
 
@@ -57,15 +56,15 @@ void Engine::shutdown() {
 }
 
 void Engine::processInput() {
-    SDL_Event e;
-    while (SDL_PollEvent(&e) != 0) {
-        if (e.type == SDL_QUIT) { is_running=false; }
-        if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) { is_running=false; }
-    }
+    input.update();
+    if (input.isPressed(SDLK_ESCAPE)) { is_running = false; }
+    if (input.isQuit()) { is_running = false; }
 }
 
 void Engine::update() {
-    ecs.update();
+    if (input.isPressed(SDLK_w)) {
+        ecs.update();   
+    }
 }
 
 void Engine::render() {}

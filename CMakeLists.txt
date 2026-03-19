@@ -9,6 +9,7 @@ add_executable(MyEngine
     src/main.cpp
     src/engine.cpp
     src/ECS.cpp
+    src/Input.cpp
 )
 
 target_include_directories(MyEngine PRIVATE

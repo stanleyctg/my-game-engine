@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "ECS.h"
+#include "Input.h"
 
 class Engine {
     public:
@@ -16,4 +17,5 @@ class Engine {
         SDL_Renderer* renderer = nullptr;
         bool is_running = false;
         ECS ecs;
+        Input input;
 };
