@@ -7,9 +7,10 @@ find_package(SDL2 REQUIRED)
 
 add_executable(MyEngine
     src/main.cpp
-    src/engine.cpp
+    src/Engine.cpp
     src/ECS.cpp
     src/Input.cpp
+    src/Renderer.cpp
 )
 
 target_include_directories(MyEngine PRIVATE

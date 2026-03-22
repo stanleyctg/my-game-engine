@@ -1,4 +1,4 @@
-#include "engine.h"
+#include "Engine.h"
 #include <iostream>
 
 void Engine::init() {
@@ -18,20 +18,18 @@ void Engine::init() {
         std::cout << "Error: " << SDL_GetError() << '\n';
         return;
     }
-    screenSurface = SDL_GetWindowSurface(window);
-    SDL_FillRect(
-        screenSurface,
-        NULL,
-        SDL_MapRGB(screenSurface->format, 0XFF, 0XFF, 0XBB)
-    );
-    SDL_UpdateWindowSurface(window);
+    renderer.init(window);
+
+    // Create a renderer obj with engine
     EntityID e1 = ecs.createEntity();
     ecs.addPosition(e1, 0.0f, 0.0f);
     ecs.addVelocity(e1, 1.0f, 0.5f);
+    ecs.addRender(e1,20,20);
 
     EntityID e2 = ecs.createEntity();
     ecs.addPosition(e2, 100.0f, 50.0f);
     ecs.addVelocity(e2, 2.0f, 0.0f);
+    ecs.addRender(e2,20,20);
 }
 
 void Engine::run() {
@@ -63,8 +61,15 @@ void Engine::processInput() {
 
 void Engine::update() {
     if (input.isPressed(SDLK_w)) {
-        ecs.update();   
+        ecs.update();  
+    }
+    if (input.isHeld(SDLK_w)) {
+        ecs.update();
     }
 }
 
-void Engine::render() {}
+void Engine::render() {
+    renderer.clear();
+    renderer.draw(ecs);
+    renderer.present();
+}

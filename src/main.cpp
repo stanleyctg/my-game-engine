@@ -1,6 +1,6 @@
 #include <SDL.h>
 #include <iostream>
-#include "engine.h"
+#include "Engine.h"
 
 int main() {
     Engine engine;

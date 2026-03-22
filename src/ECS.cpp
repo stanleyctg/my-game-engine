@@ -18,6 +18,18 @@ void ECS::addVelocity(EntityID id, float dx, float dy) {
     velocities[id] = {dx, dy};
 }
 
+void ECS::addRender(EntityID id, float w, float h) {
+    renders[id] = {w, h};
+}
+
+std::unordered_map<EntityID, PositionComponent> ECS::getPositions() {
+    return positions;
+}
+
+std::unordered_map<EntityID, RenderComponent> ECS::getRenderables() {
+    return renders;
+}
+
 void ECS::update() {
     for (auto& [id, v] : velocities) {
         if (positions.count(id)) {
