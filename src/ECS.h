@@ -25,6 +25,8 @@ class ECS {
         std::unordered_map<EntityID, PositionComponent> getPositions();
         std::unordered_map<EntityID, RenderComponent> getRenderables();
         void update();
+        void update_right();
+        void update_left();
 
     private:
         EntityID nextID = 0;

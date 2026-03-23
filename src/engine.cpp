@@ -60,12 +60,15 @@ void Engine::processInput() {
 }
 
 void Engine::update() {
-    if (input.isPressed(SDLK_w)) {
+    if (input.isPressed(SDLK_w) || input.isHeld(SDLK_w)) {
         ecs.update();  
     }
-    if (input.isHeld(SDLK_w)) {
-        ecs.update();
+    if (input.isPressed(SDLK_d) || input.isHeld(SDLK_d)) {
+        ecs.update_right();
     }
+    if (input.isPressed(SDLK_a) || input.isHeld(SDLK_a)) {
+        ecs.update_left();
+    }    
 }
 
 void Engine::render() {

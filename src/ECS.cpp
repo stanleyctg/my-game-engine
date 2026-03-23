@@ -40,3 +40,21 @@ void ECS::update() {
         }
     }
 }
+
+void ECS::update_right() {
+    for (auto& [id, v] : velocities) {
+        if (positions.count(id)) {
+            auto& pos = positions.at(id);
+            pos.x += v.dx;
+        }
+    }
+}
+
+void ECS::update_left() {
+    for (auto& [id, v] : velocities) {
+        if (positions.count(id)) {
+            auto& pos = positions.at(id);
+            pos.x -= v.dx;
+        }
+    }
+}
