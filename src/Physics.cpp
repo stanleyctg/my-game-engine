@@ -2,9 +2,23 @@
 #include <algorithm>
 #include "constants.h"
 
+Physics::Physics(ECS& ecs) : 
+    ecs(ecs), 
+    positions(ecs.getPositions()),
+    renderables(ecs.getRenderables()),
+    velocities(ecs.getVelocities())
+{}
+
 void Physics::applyGravity() {
     for (auto& [id, velocity] : velocities) {
-        velocity.dy += 0.1f;
+        if (positions.count(id) && renderables.count(id)) {
+            auto& pos = positions.at(id);
+            auto& ren = renderables.at(id);
+
+            if (pos.y + ren.height < WINDOW_HEIGHT) {
+                velocity.dy += 0.1f;
+            }
+        }
     }
 }
 
@@ -115,6 +129,8 @@ void Physics::resolveCollision() {
                 posA.y += overlapY / 2;
                 posB.y -= overlapY / 2;
             }
+            velA.dy = 0;
+            velB.dy = 0;
         }
     } 
 }

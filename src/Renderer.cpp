@@ -1,6 +1,8 @@
 #include "Renderer.h"
 #include <iostream>
 
+Renderer::Renderer(ECS& ecs) : ecs(ecs) {};
+
 void Renderer::init(SDL_Window* window) {
     sdlRenderer= SDL_CreateRenderer(window, -1, 0);
     if (sdlRenderer == nullptr) {
@@ -13,7 +15,7 @@ void Renderer::clear() {
     SDL_RenderClear(sdlRenderer);
 }
 
-void Renderer::draw(ECS& ecs) {
+void Renderer::draw() {
     auto& renderables = ecs.getRenderables();
     auto& positions = ecs.getPositions();
 

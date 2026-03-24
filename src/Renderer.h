@@ -5,10 +5,12 @@
 
 class Renderer {
     public:
+        Renderer(ECS& ecs);
         void init(SDL_Window* window);
         void clear();
-        void draw(ECS& ecs);
+        void draw();
         void present();
     private:
         SDL_Renderer* sdlRenderer = nullptr;
+        ECS& ecs;
 };

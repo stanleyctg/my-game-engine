@@ -2,7 +2,7 @@
 #include <iostream>
 #include "constants.h"
 
-Engine::Engine() : physics(ecs) {}
+Engine::Engine() : physics(ecs), renderer(ecs) {}
 
 void Engine::init() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -68,12 +68,12 @@ void Engine::update() {
         ecs.update_left();
     } 
     physics.applyGravity();
-    physics.applyCollision();
-    ecs.update();    
+    ecs.update();  
+    physics.applyCollision();  
 }
 
 void Engine::render() {
     renderer.clear();
-    renderer.draw(ecs);
+    renderer.draw();
     renderer.present();
 }

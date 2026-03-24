@@ -4,12 +4,7 @@
 
 class Physics {
     public:
-        Physics(ECS& ecs) : 
-            ecs(ecs), 
-            positions(ecs.getPositions()),
-            renderables(ecs.getRenderables()),
-            velocities(ecs.getVelocities())
-        {}
+        Physics(ECS& ecs);
         void applyGravity();
         void applyCollision();
     private:
