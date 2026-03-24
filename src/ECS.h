@@ -1,20 +1,9 @@
 #pragma once
 #include <unordered_map>
 #include <vector>
+#include "constants.h"
 
 using EntityID = unsigned int;
-
-struct PositionComponent {
-    float x, y;
-};
-
-struct VelocityComponent {
-    float dx, dy;
-};
-
-struct RenderComponent {
-    float width, height;
-};
 
 class ECS {
     public:

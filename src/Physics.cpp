@@ -1,5 +1,6 @@
 #include "Physics.h"
 #include <algorithm>
+#include "constants.h"
 
 void Physics::applyGravity() {
     for (auto& [id, velocity] : velocities) {
@@ -124,15 +125,15 @@ void Physics::checkAndResolveBoundaries() {
         auto& pos = positions[id];
         auto& vel = velocities[id];
 
-        if (pos.y + ren.height >= 600) {
-            pos.y = 600 - ren.height;
+        if (pos.y + ren.height >= WINDOW_HEIGHT) {
+            pos.y = WINDOW_HEIGHT - ren.height;
             vel.dy = 0;
         }
         if (pos.y <= 0) {
             pos.y = 0;
         }
-        if (pos.x + ren.width >= 800) {
-            pos.x = 800 - ren.width;
+        if (pos.x + ren.width >= WINDOW_WIDTH) {
+            pos.x = WINDOW_WIDTH - ren.width;
         }
         if (pos.x <= 0) {
             pos.x = 0;

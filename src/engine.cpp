@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include <iostream>
+#include "constants.h"
 
 Engine::Engine() : physics(ecs) {}
 
@@ -12,8 +13,8 @@ void Engine::init() {
         "Game Engine",
         200,
         200,
-        800,
-        600,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT,
         SDL_WINDOW_SHOWN
     );
     if (window == nullptr) {
@@ -35,8 +36,6 @@ void Engine::init() {
 }
 
 void Engine::run() {
-    const int TARGET_FPS = 60;
-    const int TARGET_FRAME_MS = 1000 / TARGET_FPS;
     is_running = true;
     while (is_running) {
         int frameStart = SDL_GetTicks();
