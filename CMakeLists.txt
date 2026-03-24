@@ -11,6 +11,7 @@ add_executable(MyEngine
     src/ECS.cpp
     src/Input.cpp
     src/Renderer.cpp
+    src/Physics.cpp
 )
 
 target_include_directories(MyEngine PRIVATE

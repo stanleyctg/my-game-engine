@@ -3,9 +3,11 @@
 #include "ECS.h"
 #include "Input.h"
 #include "Renderer.h"
+#include "Physics.h"
 
 class Engine {
     public:
+        Engine();
         void init();
         void run();
         void shutdown();
@@ -19,4 +21,5 @@ class Engine {
         ECS ecs;
         Input input;
         Renderer renderer;
+        Physics physics;
 };

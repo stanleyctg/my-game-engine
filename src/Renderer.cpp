@@ -14,8 +14,8 @@ void Renderer::clear() {
 }
 
 void Renderer::draw(ECS& ecs) {
-    auto renderables = ecs.getRenderables();
-    auto positions = ecs.getPositions();
+    auto& renderables = ecs.getRenderables();
+    auto& positions = ecs.getPositions();
 
     for (auto& [id, renderable] : renderables) {
         SDL_Rect rect;

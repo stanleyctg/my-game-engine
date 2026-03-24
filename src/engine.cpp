@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include <iostream>
 
+Engine::Engine() : physics(ecs) {}
+
 void Engine::init() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cout << "Error: " << SDL_GetError() << '\n';
@@ -28,7 +30,7 @@ void Engine::init() {
 
     EntityID e2 = ecs.createEntity();
     ecs.addPosition(e2, 100.0f, 50.0f);
-    ecs.addVelocity(e2, 2.0f, 0.0f);
+    ecs.addVelocity(e2, 2.0f, 0.5f);
     ecs.addRender(e2,20,20);
 }
 
@@ -59,16 +61,16 @@ void Engine::processInput() {
     if (input.isQuit()) { is_running = false; }
 }
 
-void Engine::update() {
-    if (input.isPressed(SDLK_w) || input.isHeld(SDLK_w)) {
-        ecs.update();  
-    }
+void Engine::update() { 
     if (input.isPressed(SDLK_d) || input.isHeld(SDLK_d)) {
         ecs.update_right();
     }
     if (input.isPressed(SDLK_a) || input.isHeld(SDLK_a)) {
         ecs.update_left();
-    }    
+    } 
+    physics.applyGravity();
+    physics.applyCollision();
+    ecs.update();    
 }
 
 void Engine::render() {

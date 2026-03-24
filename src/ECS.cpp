@@ -22,21 +22,23 @@ void ECS::addRender(EntityID id, float w, float h) {
     renders[id] = {w, h};
 }
 
-std::unordered_map<EntityID, PositionComponent> ECS::getPositions() {
+std::unordered_map<EntityID, PositionComponent>& ECS::getPositions() {
     return positions;
 }
 
-std::unordered_map<EntityID, RenderComponent> ECS::getRenderables() {
+std::unordered_map<EntityID, RenderComponent>& ECS::getRenderables() {
     return renders;
+}
+
+std::unordered_map<EntityID, VelocityComponent>& ECS::getVelocities() {
+    return velocities;
 }
 
 void ECS::update() {
     for (auto& [id, v] : velocities) {
         if (positions.count(id)) {
             auto& pos = positions.at(id);
-            pos.x += v.dx;
             pos.y += v.dy;
-            std::cout << "ECS: " << id << "pos: " << pos.x << " " << pos.y << "\n";
         }
     }
 }
