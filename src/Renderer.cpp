@@ -3,6 +3,13 @@
 
 Renderer::Renderer(ECS& ecs) : ecs(ecs) {};
 
+Renderer::~Renderer() {
+    if (sdlRenderer) {
+        SDL_DestroyRenderer(sdlRenderer);
+        sdlRenderer = nullptr;
+    }
+}
+
 void Renderer::init(SDL_Window* window) {
     sdlRenderer= SDL_CreateRenderer(window, -1, 0);
     if (sdlRenderer == nullptr) {

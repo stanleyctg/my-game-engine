@@ -6,6 +6,7 @@
 class Renderer {
     public:
         Renderer(ECS& ecs);
+        ~Renderer();
         void init(SDL_Window* window);
         void clear();
         void draw();
