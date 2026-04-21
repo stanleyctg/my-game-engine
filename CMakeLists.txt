@@ -9,7 +9,6 @@ add_executable(MyEngine
     src/main.cpp
     src/core/Engine.cpp
     src/core/ECS.cpp
-    src/core/Window.cpp
     src/systems/Input.cpp
     src/systems/Renderer.cpp
     src/systems/Physics.cpp
