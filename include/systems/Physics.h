@@ -17,4 +17,5 @@ class Physics {
         std::unordered_map<EntityID, PositionComponent>& positions;
         std::unordered_map<EntityID, RenderComponent>& renderables;
         std::unordered_map<EntityID, VelocityComponent>& velocities;
+        std::unordered_map<EntityID, FlagPhysics>& physicsFlags;
 };

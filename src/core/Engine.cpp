@@ -20,6 +20,9 @@ void Engine::init() {
         .render = {20, 20, {255, 255, 255, 255}, Shape::Rectangle}
     };
     EntityID e2 = ecs.createEntity(config2);
+    ecs.applyGravity(e2, false);
+    ecs.applyCollision(e2, false);
+    ecs.isStatic(e2, true);
 }
 
 void Engine::run() {
