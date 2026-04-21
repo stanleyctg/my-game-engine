@@ -26,6 +26,12 @@ struct EntityConfig {
     RenderComponent render = {20, 20, {255, 255, 255, 255}, Shape::Rectangle};
 };
 
+struct FlagPhysics {
+    bool applyGravity = true;
+    bool applyCollision = true;
+    bool isStatic = false;
+};
+
 const int TARGET_FPS = 60;
 const int TARGET_FRAME_MS = 1000 / TARGET_FPS;
 

@@ -6,11 +6,13 @@ Physics::Physics(ECS& ecs) :
     ecs(ecs), 
     positions(ecs.getPositions()),
     renderables(ecs.getRenderables()),
-    velocities(ecs.getVelocities())
+    velocities(ecs.getVelocities()),
+    physicsFlags(ecs.getPhysicsFlags())
 {}
 
 void Physics::applyGravity() {
     for (auto& [id, velocity] : velocities) {
+        if (!physicsFlags[id].applyGravity) continue;
         if (positions.count(id) && renderables.count(id)) {
             auto& pos = positions.at(id);
             auto& ren = renderables.at(id);
@@ -137,6 +139,7 @@ void Physics::resolveCollision() {
 
 void Physics::checkAndResolveBoundaries() {
     for (auto& [id, _] : positions) {
+        if (!physicsFlags[id].applyCollision) continue;
         auto& ren = renderables[id];
         auto& pos = positions[id];
         auto& vel = velocities[id];
