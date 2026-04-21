@@ -7,16 +7,18 @@ find_package(SDL2 REQUIRED)
 
 add_executable(MyEngine
     src/main.cpp
-    src/Engine.cpp
-    src/ECS.cpp
-    src/Input.cpp
-    src/Renderer.cpp
-    src/Physics.cpp
+    src/core/Engine.cpp
+    src/core/ECS.cpp
+    src/systems/Input.cpp
+    src/systems/Renderer.cpp
+    src/systems/Physics.cpp
 )
 
 target_include_directories(MyEngine PRIVATE
     ${SDL2_INCLUDE_DIRS}
-    src/
+    include/
+    include/core
+    include/systems
 )
 
 target_link_libraries(MyEngine
