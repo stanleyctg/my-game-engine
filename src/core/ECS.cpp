@@ -3,9 +3,9 @@
 
 EntityID ECS::createEntity(EntityConfig config) {
     EntityID id = nextID++;
-    positions[id] = config.position;
-    velocities[id] = config.velocity;
-    renders[id] = config.render;
+    addPosition(id, config.position.x, config.position.y);
+    addVelocity(id, config.velocity.dx, config.velocity.dy);
+    addRender(id, config.render.width, config.render.height, config.render.color, config.render.shape);
     return id;
 }
 
@@ -24,7 +24,11 @@ void ECS::addVelocity(EntityID id, float dx, float dy) {
 }
 
 void ECS::addRender(EntityID id, float w, float h, SDL_Color color, Shape shape) {
-    renders[id] = {w, h, color, shape};
+    if (shape == Shape::Circle) {
+        renders[id] = {w, w, color, shape};
+    } else {
+        renders[id] = {w, h, color, shape};
+    }
 }
 
 void ECS::applyGravity(EntityID id, bool apply) {

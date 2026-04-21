@@ -9,19 +9,19 @@ void Engine::init() {
 
     // Create a renderer obj with engine
     EntityConfig config1 = {
-        .position = {0.0f, 0.0f},
-        .render = {50, 20, {255, 255, 255, 255}, Shape::Circle}
+        .position = {200.0f, 0.0f},
+        .render = {50, 50, {255, 255, 255, 255}, Shape::Circle}
     };
     EntityID e1 = ecs.createEntity(config1);
 
     EntityConfig config2 = {
         .position = {100.0f, 50.0f},
         .velocity = {2.0f, 10.0f},
-        .render = {20, 20, {255, 255, 255, 255}, Shape::Rectangle}
+        .render = {20, 20, {255, 255, 255, 255}, Shape::Circle}
     };
     EntityID e2 = ecs.createEntity(config2);
-    ecs.applyGravity(e2, false);
-    ecs.applyCollision(e2, false);
+    // ecs.applyGravity(e2, false);
+    // ecs.applyCollision(e2, false);
     ecs.isStatic(e2, true);
 }
 

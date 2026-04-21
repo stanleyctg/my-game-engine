@@ -1,6 +1,7 @@
 #include "Physics.h"
 #include <algorithm>
 #include "constants.h"
+#include <iostream>
 
 Physics::Physics(ECS& ecs) : 
     ecs(ecs), 
