@@ -1,4 +1,10 @@
 #pragma once
+#include <SDL.h>
+
+enum class Shape {
+    Rectangle,
+    Circle
+};
 
 struct PositionComponent {
     float x, y;
@@ -10,6 +16,14 @@ struct VelocityComponent {
 
 struct RenderComponent {
     float width, height;
+    SDL_Color color;
+    Shape shape;
+};
+
+struct EntityConfig {
+    PositionComponent position = {0, 0};
+    VelocityComponent velocity = {0, 0};
+    RenderComponent render = {20, 20, {255, 255, 255, 255}, Shape::Rectangle};
 };
 
 const int TARGET_FPS = 60;

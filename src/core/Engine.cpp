@@ -8,15 +8,18 @@ void Engine::init() {
     renderer.init(window);
 
     // Create a renderer obj with engine
-    EntityID e1 = ecs.createEntity();
-    ecs.addPosition(e1, 0.0f, 0.0f);
-    ecs.addVelocity(e1, 1.0f, 0.5f);
-    ecs.addRender(e1,20,20);
+    EntityConfig config1 = {
+        .position = {0.0f, 0.0f},
+        .render = {50, 20, {255, 255, 255, 255}, Shape::Circle}
+    };
+    EntityID e1 = ecs.createEntity(config1);
 
-    EntityID e2 = ecs.createEntity();
-    ecs.addPosition(e2, 100.0f, 50.0f);
-    ecs.addVelocity(e2, 2.0f, 0.5f);
-    ecs.addRender(e2,20,20);
+    EntityConfig config2 = {
+        .position = {100.0f, 50.0f},
+        .velocity = {2.0f, 10.0f},
+        .render = {20, 20, {255, 255, 255, 255}, Shape::Rectangle}
+    };
+    EntityID e2 = ecs.createEntity(config2);
 }
 
 void Engine::run() {
@@ -44,12 +47,12 @@ void Engine::processInput() {
 }
 
 void Engine::update() { 
-    if (input.isPressed(SDLK_d) || input.isHeld(SDLK_d)) {
-        ecs.update_right();
-    }
-    if (input.isPressed(SDLK_a) || input.isHeld(SDLK_a)) {
-        ecs.update_left();
-    } 
+    // if (input.isPressed(SDLK_d) || input.isHeld(SDLK_d)) {
+    //     ecs.update_right();
+    // }
+    // if (input.isPressed(SDLK_a) || input.isHeld(SDLK_a)) {
+    //     ecs.update_left();
+    // } 
     physics.applyGravity();
     ecs.update();  
     physics.applyCollision();  
