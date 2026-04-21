@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include <iostream>
 
-Renderer::Renderer(ECS& ecs) : ecs(ecs) {};
+Renderer::Renderer(ECS& ecs, Window& window) : ecs(ecs), window(window) {}
 
 Renderer::~Renderer() {
     if (sdlRenderer) {
@@ -10,8 +10,8 @@ Renderer::~Renderer() {
     }
 }
 
-void Renderer::init(SDL_Window* window) {
-    sdlRenderer= SDL_CreateRenderer(window, -1, 0);
+void Renderer::init(Window& window) {
+    sdlRenderer= SDL_CreateRenderer(window.getSDLWindow(), -1, 0);
     if (sdlRenderer == nullptr) {
         std::cout << "Error with creating renderer: " << SDL_GetError() << '\n';
     }
