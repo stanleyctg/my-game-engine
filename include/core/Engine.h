@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Renderer.h"
 #include "Physics.h"
+#include "Window.h"
 
 class Engine {
     public:
@@ -15,11 +16,11 @@ class Engine {
         void processInput();
         void update();
         void render();
-        SDL_Window* window = nullptr;
         SDL_Surface* screenSurface = nullptr;
         bool is_running = false;
         ECS ecs;
         Input input;
         Renderer renderer;
         Physics physics;
+        Window window;
 };

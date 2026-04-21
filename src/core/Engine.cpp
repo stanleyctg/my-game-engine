@@ -2,25 +2,9 @@
 #include <iostream>
 #include "constants.h"
 
-Engine::Engine() : physics(ecs), renderer(ecs) {}
+Engine::Engine() : window("Game Engine", WINDOW_WIDTH, WINDOW_HEIGHT), physics(ecs), renderer(ecs, window) {}
 
 void Engine::init() {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "Error: " << SDL_GetError() << '\n';
-        return;
-    }
-    window = SDL_CreateWindow(
-        "Game Engine",
-        200,
-        200,
-        WINDOW_WIDTH,
-        WINDOW_HEIGHT,
-        SDL_WINDOW_SHOWN
-    );
-    if (window == nullptr) {
-        std::cout << "Error: " << SDL_GetError() << '\n';
-        return;
-    }
     renderer.init(window);
 
     // Create a renderer obj with engine
@@ -50,7 +34,6 @@ void Engine::run() {
 }
 
 void Engine::shutdown() {
-    SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
